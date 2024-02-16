@@ -30,6 +30,7 @@
   "bugs": {
     "url": "https://github.com/intbot/ng2-pdfjs-viewer/issues"
   },
-  "dependencies": {    
+  "devDependencies": {
+    "ng-packagr": "^17.2.0"
   }
 }
