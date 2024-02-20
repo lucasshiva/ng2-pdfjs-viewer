@@ -4,11 +4,11 @@
   <img src="https://badge.fury.io/js/@kariudo/ng2-pdfjs-viewer.svg" alt="npm version">
 </a>
 
-This is an angular component for displaying pdfs inline(embedded) OR in a new tab along with a feature rich viewer. It functions as a wrapper to Mozilla's PDF.js viewer, now based on v4.0.x ✨. The previous library this project inherited from was stuck on v2.x and the old event handling and aesthetics, which were no longer copatible with current versions.
+This is an angular component for displaying pdfs inline(embedded) OR in a new tab along with a feature rich viewer. It functions as a wrapper to Mozilla's PDF.js viewer, now based on ✨ v4.0.x ✨. The previous library this project inherited from was stuck on v2.x and the old event handling and aesthetics, which were no longer compatible with current versions.
 
 This project is derived from [intbot/ng2-pdfjs-viewer](https://github.com/intbot/ng2-pdfjs-viewer) which does not support recent versions of PDF.js.
 
-## What is new?
+## What's new?
 
 1. **Updated to current version of PDF.js viewer** - Fixes a lot of rendering issues, improves eventing.
 2. **New Events** - Added support for additional event bus activities (page rotation, document scale changes).
@@ -25,7 +25,7 @@ Some of below features are unique to this component, which is unavailable in nat
 ✔️ **Direct access to underlying viewer** 👨‍💻👩‍💻- Exposed PDFViewerApplication and PDFViewerApplicationOptions objects opens a whole world of customizable PDFJS and ViewerJS properties and methods, allowing to change them programmatically; thus producing a unique viewer experience.  
 ✔️ **Embed pdf** 🗎 - Embeds viewer and pdf inside your web page/component.  
 ✔️ **Blob and byte arrays** 🔟 - Have pdf as a byte array? Still works.  
-✔️ **Events** ⚡ - Catch events such as document loaded, page change, before/after print etc.Please make sure to provide `viewerId` for events to work properly.  
+✔️ **Events** ⚡ - Handle events such as document loaded, page change, page rotation, scale change, before/after print etc. Please make sure to provide `viewerId` for events to work properly.  
 ✔️ **Print preview** 🖨️ - You can set the pdf to open in a new tab or another browser window and provide an immediate print preview, A use case will be a 'Print' button opening pdf in new window with print dialog.  
 ✔️ **Defaults** - There are a ton of built in functionality Mozilla's viewer supports; such as print, download, bookmark, fullscreen, open file, zoom, search, pan, spread, navigate, attachments etc which is also available as-is in this viewer. Not mentioning them individually.  
 ✔️ **Auto download** 💾 - This option allows you to download the pdf file to user device automatically without manually invoking the download.  
