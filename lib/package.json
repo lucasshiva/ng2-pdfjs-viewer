@@ -1,6 +1,6 @@
 {
   "name": "@kariudo/ng2-pdfjs-viewer",
-  "version": "17.0.10",
+  "version": "17.0.11",
   "author": {
     "name": "Hunter Horsman",
     "email": "kariudo@gmail.com"
@@ -9,6 +9,9 @@
     "type": "git",
     "url": "https://github.com/kariudo/ng2-pdfjs-viewer"
   },
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
     "ng-packagr": "^17.2.0",
     "shx": "^0.3.4"
@@ -34,6 +37,7 @@
   "scripts": {
     "clean": "shx rm -rf ./dist",
     "build": "npm run clean && ng-packagr -p ng-package.json",
+    "ci": "npm run build",
     "package": "npm run build && npm pack --pack-destination=\"./dist/\""
   }
 }

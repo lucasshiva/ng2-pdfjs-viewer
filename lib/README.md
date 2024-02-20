@@ -1,10 +1,13 @@
 # Angular PDF viewer with Mozilla's PDF.js (v4.x)
 
-<a href="https://badge.fury.io/js/@kariudo/ng2-pdfjs-viewer">
-  <img src="https://badge.fury.io/js/@kariudo/ng2-pdfjs-viewer.svg" alt="npm version">
-</a>
+An angular component for displaying pdfs, wrapping the latest Mozilla PDF.js.
 
-This is an angular component for displaying pdfs inline(embedded) OR in a new tab along with a feature rich viewer. It functions as a wrapper to Mozilla's PDF.js viewer, now based on ✨ v4.0.x ✨. The previous library this project inherited from was stuck on v2.x and the old event handling and aesthetics, which were no longer compatible with current versions.
+[![npm version](https://badge.fury.io/js/@kariudo%2Fng2-pdfjs-viewer.svg)](https://badge.fury.io/js/@kariudo%2Fng2-pdfjs-viewer)
+![Static Badge](https://img.shields.io/badge/Angular%20Version-17-green)
+![Static Badge](https://img.shields.io/badge/PDF.js%20Version-4.0.x-blue)
+
+
+An angular component for displaying pdfs inline(embedded) OR in a new tab along with a feature rich viewer. It functions as a wrapper to Mozilla's PDF.js viewer, now based on ✨ v4.0.x ✨. The previous library this project inherited from was stuck on v2.x and the old event handling and aesthetics, which were no longer compatible with current versions.
 
 This project is derived from [intbot/ng2-pdfjs-viewer](https://github.com/intbot/ng2-pdfjs-viewer) which does not support recent versions of PDF.js.
 
