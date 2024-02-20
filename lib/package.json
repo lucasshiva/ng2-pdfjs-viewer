@@ -1,6 +1,6 @@
 {
   "name": "@kariudo/ng2-pdfjs-viewer",
-  "version": "17.0.17",
+  "version": "17.0.18",
   "author": {
     "name": "Hunter Horsman",
     "email": "kariudo@gmail.com"
@@ -41,7 +41,7 @@
     "clean": "shx rm -rf ./dist",
     "build": "npm run clean && ng-packagr -p ng-package.json",
     "package": "npm run build && npm pack --pack-destination=\"./dist/\"",
-    "preversion": "mkdir .git",
+    "bump": "mkdir .git && npm version patch",
     "version": "npm run build && git add -A .",
     "postversion": "git push && git push --tags && rmdir .git"
   }
