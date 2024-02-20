@@ -189,16 +189,11 @@ ngOnInit(): void {
     this.loadPdf();
   }
 
-  private relaseUrl?: () => void; // Avoid memory leask with `URL.createObjectURL`
+  private relaseUrl?: () => void; // Avoid memory leak with `URL.createObjectURL`
   private loadPdf() {
     if (!this._src) {
       return;
     }
-
-    // console.log(`Tab is - ${this.viewerTab}`);
-    // if (this.viewerTab) {
-    //   console.log(`Status of window - ${this.viewerTab.closed}`);
-    // }
 
     if (this.externalWindow && (typeof this.viewerTab === 'undefined' || this.viewerTab.closed)) {
       this.viewerTab = window.open('', this.target, this.externalWindowOptions || '');
@@ -237,9 +232,6 @@ ngOnInit(): void {
 
     this.relaseUrl?.();
     let fileUrl;
-    //if (typeof this.src === "string") {
-    //  fileUrl = this.src;
-    //}
     if (this._src instanceof Blob) {
       const url = URL.createObjectURL(this._src);
       fileUrl = encodeURIComponent(url);
@@ -365,35 +357,37 @@ ngOnInit(): void {
     } else {
       this.iframe.nativeElement.src = viewerUrl;
     }
-
-    // console.log(`
-    //   pdfSrc = ${this.pdfSrc}
-    //   fileUrl = ${fileUrl}
-    //   externalWindow = ${this.externalWindow}
-    //   downloadFileName = ${this.downloadFileName}
-    //   viewerFolder = ${this.viewerFolder}
-    //   openFile = ${this.openFile}
-    //   download = ${this.download}
-    //   startDownload = ${this.startDownload}
-    //   viewBookmark = ${this.viewBookmark}
-    //   print = ${this.print}
-    //   startPrint = ${this.startPrint}
-    //   fullScreen = ${this.fullScreen}
-    //   find = ${this.find}
-    //   lastPage = ${this.lastPage}
-    //   rotatecw = ${this.rotatecw}
-    //   rotateccw = ${this.rotateccw}
-    //   cursor = ${this.cursor}
-    //   scrollMode = ${this.scroll}
-    //   spread = ${this.spread}
-    //   page = ${this.page}
-    //   zoom = ${this.zoom}
-    //   nameddest = ${this.nameddest}
-    //   pagemode = ${this.pagemode}
-    //   pagemode = ${this.errorOverride}
-    //   pagemode = ${this.errorAppend}
-    //   pagemode = ${this.errorMessage}
-    // `);
+    
+    if (this.diagnosticLogs) {
+      console.debug(`PdfJsViewer: Viewer URL configuration:
+        pdfSrc = ${this.pdfSrc}
+        fileUrl = ${fileUrl}
+        externalWindow = ${this.externalWindow}
+        downloadFileName = ${this.downloadFileName}
+        viewerFolder = ${this.viewerFolder}
+        openFile = ${this.openFile}
+        download = ${this.download}
+        startDownload = ${this.startDownload}
+        viewBookmark = ${this.viewBookmark}
+        print = ${this.print}
+        startPrint = ${this.startPrint}
+        fullScreen = ${this.fullScreen}
+        find = ${this.find}
+        lastPage = ${this.lastPage}
+        rotatecw = ${this.rotatecw}
+        rotateccw = ${this.rotateccw}
+        cursor = ${this.cursor}
+        scrollMode = ${this.scroll}
+        spread = ${this.spread}
+        page = ${this.page}
+        zoom = ${this.zoom}
+        nameddest = ${this.nameddest}
+        pagemode = ${this.pagemode}
+        errorOverride = ${this.errorOverride}
+        errorAppend = ${this.errorAppend}
+        errorMessage = ${this.errorMessage}
+      `);
+      }
   }
 
   ngOnDestroy(): void {
