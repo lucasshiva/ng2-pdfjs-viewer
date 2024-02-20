@@ -2,9 +2,11 @@
   "name": "angular-pdfviewer-sample-app",
   "version": "1.0.0",
   "scripts": {
+    "clean": "shx rm -rf ./dist ./node_modules/.cache/",
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "relink-lib":"shx rm -rf ./node_modules/.cache/ && npm link ng2-pdfjs-viewer && ng cache clean",
+    "start": "npm run relink-lib && ng serve --configuration=development",
+    "build": "npm run relink-lib && ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -23,6 +25,7 @@
     "@angular/router": "^17.2.1",
     "core-js": "^3.36.0",
     "hammerjs": "^2.0.8",
+    "ng2-pdfjs-viewer": "file:../lib/dist",
     "rxjs": "^7.8.1",
     "zone.js": "~0.14.4"
   },
@@ -43,6 +46,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "^2.1.0",
     "protractor": "~7.0.0",
+    "shx": "^0.3.4",
     "ts-node": "^10.9.2",
     "tslint": "~5.20.1",
     "typescript": "^5.3.3"

@@ -261,3 +261,5 @@ __pycache__/
 *.pyc
 
 dist/
+assets/pdfjs
+node_modules/

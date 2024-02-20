@@ -40,7 +40,7 @@ export class PdfJsViewerComponent implements OnInit, OnDestroy {
   @Input() public errorOverride: boolean = false;
   @Input() public errorAppend: boolean = true;
   @Input() public errorMessage: string;
-  @Input() public diagnosticLogs: boolean = true;
+  @Input() public diagnosticLogs: boolean = false;
 
   @Input() public externalWindowOptions: string;
   public viewerTab: any;
@@ -99,36 +99,62 @@ export class PdfJsViewerComponent implements OnInit, OnDestroy {
         pdfViewer = this.iframe.nativeElement.contentWindow.PDFViewerApplication;
       }
     }
+    if(this.diagnosticLogs) console.debug("PdfJsViewer: Viewer ->", pdfViewer);
     return pdfViewer;
   }
 
-  public receiveMessage(viewerEvent)  {
-    if (viewerEvent.data && viewerEvent.data.viewerId && viewerEvent.data.event) {
-      let viewerId = viewerEvent.data.viewerId;
-      let event = viewerEvent.data.event;
-      let param = viewerEvent.data.param;
-      if (this.viewerId == viewerId) {
-        if (this.onBeforePrint && event == "beforePrint") {
-          this.onBeforePrint.emit();
-        }
-        else if (this.onAfterPrint && event == "afterPrint") {
-          this.onAfterPrint.emit();
-        }
-        else if (this.onDocumentLoad && event == "pagesLoaded") {
-          this.onDocumentLoad.emit(param);
-        }
-        else if (this.onPageChange && event == "pageChange") {
-          this.onPageChange.emit(param);
-        }
-      }
-    }
+ngOnInit(): void {   
+  // Load PDF for embedded views.
+  if (!this.externalWindow) {
+    this.loadPdf();
   }
 
-  ngOnInit(): void {
-    window.addEventListener("message", this.receiveMessage.bind(this), false);
-    if (!this.externalWindow) { // Load pdf for embedded views
-      this.loadPdf();
-    }
+  // Bind events.
+  this.bindToPdfJsEventBus();
+}
+
+  /**
+   * Waits for the PDF.js viewer to be ready, and binds the the event bus.
+   */
+  private bindToPdfJsEventBus() {
+    document.addEventListener("webviewerloaded", () => {
+      if (this.diagnosticLogs) console.debug("PdfJsViewer: webviewerloaded event received");
+      if (!this.PDFViewerApplication) {
+        if (this.diagnosticLogs) console.debug("PdfJsViewer: Viewer not yet (or no longer) available, events can not yet be bound.");
+        return;
+      }
+      this.PDFViewerApplication.initializedPromise.then(() => {
+        const eventBus = this.PDFViewerApplication.eventBus;
+        // Once initialized, attach the events.
+        // Document Loaded.
+        eventBus.on("documentloaded", () => {
+          if (this.diagnosticLogs) console.debug("PdfJsViewer: The document has now been loaded!");
+        });
+
+        // Pages init.
+        eventBus.on("pagesinit", () => {
+          if (this.diagnosticLogs) console.debug("PdfJsViewer: All pages have been rendered!");
+        });
+
+        // Before print.
+        eventBus.on("beforeprint", () => {
+          if (this.diagnosticLogs) console.debug("PdfJsViewer: The document is about to be printed!");
+          this.onBeforePrint.emit();
+        });
+
+        // After print.
+        eventBus.on("afterprint", () => {
+          if (this.diagnosticLogs) console.debug("PdfJsViewer: The document has been printed!");
+          this.onAfterPrint.emit();
+        });
+
+        // Page change.
+        eventBus.on("pagechanging", (event) => {
+          if (this.diagnosticLogs) console.debug("PdfJsViewer: The page has changed:", event.pageNumber);
+          this.onPageChange.emit(event.pageNumber);
+        });
+      });
+    });
   }
 
   public refresh(): void { // Needs to be invoked for external window or when needs to reload pdf
@@ -149,7 +175,7 @@ export class PdfJsViewerComponent implements OnInit, OnDestroy {
     if (this.externalWindow && (typeof this.viewerTab === 'undefined' || this.viewerTab.closed)) {
       this.viewerTab = window.open('', this.target, this.externalWindowOptions || '');
       if (this.viewerTab == null) {
-        if(this.diagnosticLogs) console.error("ng2-pdfjs-viewer: For 'externalWindow = true'. i.e opening in new tab to work, pop-ups should be enabled.");
+        console.error("ng2-pdfjs-viewer: For 'externalWindow = true'. i.e opening in new tab to work, pop-ups should be enabled.");
         return;
       }
 
