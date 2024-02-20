@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import { ChangedScale, ChangedRotation } from 'ng2-pdfjs-viewer';
+import { ChangedScale, ChangedRotation } from '@kariudo/ng2-pdfjs-viewer';
 
 @Component({
   selector: 'app-big',

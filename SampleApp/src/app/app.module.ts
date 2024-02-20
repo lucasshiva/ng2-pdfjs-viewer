@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 // ----> Import PdfJsViewerModule here
-import { PdfJsViewerModule } from 'ng2-pdfjs-viewer';
+import { PdfJsViewerModule } from '@kariudo/ng2-pdfjs-viewer';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule as MatButtonModule} from '@angular/material/button';

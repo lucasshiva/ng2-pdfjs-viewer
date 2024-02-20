@@ -1,13 +1,13 @@
 {
-  "name": "ng2-pdfjs-viewer",
+  "name": "@kariudo/ng2-pdfjs-viewer",
   "version": "17.0.10",
   "author": {
-    "name": "Code1",
-    "email": "codehippie1@gmail.com"
+    "name": "Hunter Horsman",
+    "email": "kariudo@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/intbot/ng2-pdfjs-viewer"
+    "url": "https://github.com/kariudo/ng2-pdfjs-viewer"
   },
   "devDependencies": {
     "ng-packagr": "^17.2.0",
@@ -20,7 +20,7 @@
   },
   "$schema": "./node_modules/ng-packagr/package.schema.json",
   "bugs": {
-    "url": "https://github.com/intbot/ng2-pdfjs-viewer/issues"
+    "url": "https://github.com/kariudo/ng2-pdfjs-viewer/issues"
   },
   "keywords": [
     "angular",
