@@ -1,5 +1,14 @@
 import { Component, Input, Output, OnInit, OnDestroy, ViewChild, EventEmitter, ElementRef } from '@angular/core';
 
+export type ChangedPage = Number;
+
+export type ChangedScale = Number;
+
+export interface ChangedRotation {
+  rotation: number;
+  page: number;
+}
+
 @Component({
   selector: 'ng2-pdfjs-viewer',
   template: `<iframe title="ng2-pdfjs-viewer" [hidden]="externalWindow || (!externalWindow && !pdfSrc)" #iframe width="100%" height="100%"></iframe>`
@@ -8,10 +17,12 @@ export class PdfJsViewerComponent implements OnInit, OnDestroy {
   @ViewChild('iframe', { static: true }) iframe: ElementRef;
   static lastID = 0;
   @Input() public viewerId = `ng2-pdfjs-viewer-ID${++PdfJsViewerComponent.lastID}`;
-  @Output() onBeforePrint: EventEmitter<any> = new EventEmitter();
-  @Output() onAfterPrint: EventEmitter<any> = new EventEmitter();
-  @Output() onDocumentLoad: EventEmitter<any> = new EventEmitter();
-  @Output() onPageChange: EventEmitter<any> = new EventEmitter();
+  @Output() onBeforePrint: EventEmitter<void> = new EventEmitter();
+  @Output() onAfterPrint: EventEmitter<void> = new EventEmitter();
+  @Output() onDocumentLoad: EventEmitter<void> = new EventEmitter();
+  @Output() onPageChange: EventEmitter<ChangedPage> = new EventEmitter();
+  @Output() onScaleChange: EventEmitter<ChangedScale> = new EventEmitter();
+  @Output() onRotationChange: EventEmitter<ChangedRotation> = new EventEmitter();
   @Input() public viewerFolder: string;
   @Input() public externalWindow: boolean = false;
   @Input() public target: string = '_blank';
@@ -153,6 +164,23 @@ ngOnInit(): void {
           if (this.diagnosticLogs) console.debug("PdfJsViewer: The page has changed:", event.pageNumber);
           this.onPageChange.emit(event.pageNumber);
         });
+
+        // Rotation change.
+        eventBus.on("rotationchanging", (event) => {
+          const newRotation: ChangedRotation = {
+            rotation: event.pagesRotation,
+            page: event.pageNumber
+          }
+          if (this.diagnosticLogs) console.debug("PdfJsViewer: The rotation has changed!", event);
+          this.onRotationChange.emit(newRotation);
+        })
+
+        // Scale change.
+        eventBus.on("scalechanging", (event) => {
+          const newScale: ChangedScale = event.scale;
+          if (this.diagnosticLogs) console.debug("PdfJsViewer: The document has scale has changed!", newScale);
+          this.onScaleChange.emit(newScale);
+        })
       });
     });
   }
