@@ -1,8 +1,8 @@
 import { Component, Input, Output, OnInit, OnDestroy, ViewChild, EventEmitter, ElementRef } from '@angular/core';
 
-export type ChangedPage = Number;
+export type ChangedPage = number;
 
-export type ChangedScale = Number;
+export type ChangedScale = number;
 
 export interface ChangedRotation {
   rotation: number;
