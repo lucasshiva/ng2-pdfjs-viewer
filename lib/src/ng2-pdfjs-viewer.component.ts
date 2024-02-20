@@ -140,6 +140,7 @@ ngOnInit(): void {
         // Document Loaded.
         eventBus.on("documentloaded", () => {
           if (this.diagnosticLogs) console.debug("PdfJsViewer: The document has now been loaded!");
+          this.onDocumentLoad.emit();
         });
 
         // Pages init.
