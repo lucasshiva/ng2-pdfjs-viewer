@@ -37,7 +37,6 @@
   "scripts": {
     "clean": "shx rm -rf ./dist",
     "build": "npm run clean && ng-packagr -p ng-package.json",
-    "ci": "npm run build",
     "package": "npm run build && npm pack --pack-destination=\"./dist/\""
   }
 }
