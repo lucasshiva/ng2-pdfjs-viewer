@@ -1,6 +1,6 @@
 {
   "name": "@kariudo/ng2-pdfjs-viewer",
-  "version": "17.0.15",
+  "version": "17.0.16",
   "author": {
     "name": "Hunter Horsman",
     "email": "kariudo@gmail.com"
@@ -14,17 +14,7 @@
   },
   "module": "./fesm2022/index.mjs",
   "typings": "./index.d.ts",
-  "exports": {
-    "./package.json": {
-      "default": "./package.json"
-    },
-    ".": {
-      "types": "./index.d.ts",
-      "esm2022": "./esm2022/index.mjs",
-      "esm": "./esm2022/index.mjs",
-      "default": "./fesm2022/index.mjs"
-    }
-  },
+  "exports": {},
   "devDependencies": {
     "ng-packagr": "^17.2.0",
     "shx": "^0.3.4"
