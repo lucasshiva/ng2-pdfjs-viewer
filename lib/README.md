@@ -2,9 +2,9 @@
 
 An angular component for displaying pdfs, wrapping the latest Mozilla PDF.js.
 
-![NPM Version](https://img.shields.io/npm/v/%40kariudo%2Fng2-pdfjs-viewer?logo=npm)
-![Static Badge](https://img.shields.io/badge/Angular%20Version-17-green?logo=angular)
-![Static Badge](https://img.shields.io/badge/PDF.js%20Version-4.0.x-blue?logo=mozilla)
+[![NPM Version](https://img.shields.io/npm/v/%40kariudo%2Fng2-pdfjs-viewer?logo=npm)](https://www.npmjs.com/package/@kariudo/ng2-pdfjs-viewer)
+[![Static Badge](https://img.shields.io/badge/Angular%20Version-17-green?logo=angular)](https://v17.angular.io/docs/)
+[![Static Badge](https://img.shields.io/badge/PDF.js%20Version-4.0.x-blue?logo=mozilla)](https://github.com/mozilla/pdf.js)
 
 
 An angular component for displaying pdfs inline(embedded) OR in a new tab along with a feature rich viewer. It functions as a wrapper to Mozilla's PDF.js viewer, now based on ✨ v4.0.x ✨. The previous library this project inherited from was stuck on v2.x and the old event handling and aesthetics, which were no longer compatible with current versions.
