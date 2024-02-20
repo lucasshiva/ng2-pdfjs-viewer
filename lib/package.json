@@ -41,7 +41,8 @@
     "clean": "shx rm -rf ./dist",
     "build": "npm run clean && ng-packagr -p ng-package.json",
     "package": "npm run build && npm pack --pack-destination=\"./dist/\"",
+    "preversion": "mkdir .git",
     "version": "npm run build && git add -A .",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags && rmdir .git"
   }
 }
