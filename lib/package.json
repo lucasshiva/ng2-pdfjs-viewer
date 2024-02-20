@@ -50,6 +50,8 @@
   "scripts": {
     "clean": "shx rm -rf ./dist",
     "build": "npm run clean && ng-packagr -p ng-package.json",
-    "package": "npm run build && npm pack --pack-destination=\"./dist/\""
+    "package": "npm run build && npm pack --pack-destination=\"./dist/\"",
+    "version": "npm run build && git add -A .",
+    "postversion": "git push && git push --tags"
   }
 }
