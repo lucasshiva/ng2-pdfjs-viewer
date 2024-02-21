@@ -28,7 +28,10 @@ export class PdfJsViewerComponent implements OnInit, OnDestroy {
   @Input() public target: string = '_blank';
   @Input() public showSpinner: boolean = true;
   @Input() public downloadFileName: string;
+  /** Display open file button in secondary toolbar menu. */
   @Input() public openFile: boolean = true;
+  /** Display annotations/editor controls on toolbar. */
+  @Input() public annotations: boolean = false;
   @Input() public download: boolean = true;
   @Input() public startDownload: boolean;
   @Input() public viewBookmark: boolean = true;
@@ -135,7 +138,10 @@ ngOnInit(): void {
         return;
       }
       this.PDFViewerApplication.initializedPromise.then(() => {
-        const eventBus = this.PDFViewerApplication.eventBus;
+        // Configure the controls.
+        const app = this.configureVisibleFeatures();
+
+        const eventBus = app.eventBus;
         // Once initialized, attach the events.
         // Document Loaded.
         eventBus.on("documentloaded", () => {
@@ -184,6 +190,21 @@ ngOnInit(): void {
         })
       });
     });
+  }
+
+  private configureVisibleFeatures() {
+    const app = this.PDFViewerApplication;
+    const toolbarElement = app.appConfig.secondaryToolbar.toolbar;
+    // Display of "open file" button.
+    app.appConfig.secondaryToolbar.openFileButton.hidden = !this.openFile;
+    // Hide the horizontal separator in the menu if the control is hidden.
+    toolbarElement.querySelector('.horizontalToolbarSeparator:first-of-type').hidden = !this.openFile;
+    // Display of annotations/editor controls.
+    app.appConfig.toolbar.editorFreeTextButton.hidden = !this.annotations;
+    app.appConfig.toolbar.editorStampButton.hidden = !this.annotations;
+    app.appConfig.toolbar.editorInkButton.hidden = !this.annotations;
+    app.appConfig.toolbar.editorHighlightButton.hidden = !this.annotations;
+    return app;
   }
 
   public refresh(): void { // Needs to be invoked for external window or when needs to reload pdf
