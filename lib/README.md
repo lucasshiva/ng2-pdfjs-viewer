@@ -1,4 +1,4 @@
-# Angular PDF viewer with Mozilla's PDF.js (v4.x)
+# Angular PDF viewer with Mozilla's PDF.js (v4.x) Viewer
 
 An angular component for displaying pdfs, wrapping the latest Mozilla PDF.js.
 
