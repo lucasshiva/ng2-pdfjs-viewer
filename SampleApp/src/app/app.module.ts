@@ -1,42 +1,37 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from "./app-routing.module";
 
-import { AppComponent } from './app.component';
+import { AppComponent } from "./app.component";
 // ----> Import PdfJsViewerModule here
-import { PdfJsViewerModule } from '@kariudo/ng2-pdfjs-viewer';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule as MatButtonModule} from '@angular/material/button';
-import { InlineComponent } from './inline/inline.component';
-import { BigComponent } from './big/big.component';
-import { DynamicComponent } from './dynamic/dynamic.component';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatTableModule as MatTableModule} from '@angular/material/table';
+import { MatButtonModule } from "@angular/material/button";
+import { MatGridListModule } from "@angular/material/grid-list";
+import { MatTableModule } from "@angular/material/table";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { PdfJsViewerModule } from "@lucasshiva/ng2-pdfjs-viewer";
+import { BigComponent } from "./big/big.component";
+import { DynamicComponent } from "./dynamic/dynamic.component";
+import { InlineComponent } from "./inline/inline.component";
 
 const MATERIAL_IMPORTS = [
   BrowserAnimationsModule,
   MatToolbarModule,
-  MatButtonModule
+  MatButtonModule,
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    InlineComponent,
-    BigComponent,
-    DynamicComponent
-  ],
+  declarations: [AppComponent, InlineComponent, BigComponent, DynamicComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     PdfJsViewerModule,
     MatGridListModule,
     MatTableModule,
-    MATERIAL_IMPORTS
+    MATERIAL_IMPORTS,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,16 +1,11 @@
 <mat-grid-list cols="5" rowHeight="80vh">
-  <mat-grid-tile
-    [colspan]="3"
-    [rowspan]="1">
-    <ng2-pdfjs-viewer class="fill" viewerId="MyID2" #viewer pdfSrc="/assets/pdfjs/web/compressed.tracemonkey-pldi-09.pdf"
-                      locale="de-AT" (onDocumentLoad)="pdfLoaded()" [zoom]="zoom"
-                      cursor="HAND" downloadFileName="research.pdf" scroll="W" spred="E" [print]="false"
-                      [errorOverride]="true" errorMessage="My error Message"></ng2-pdfjs-viewer>
+  <mat-grid-tile [colspan]="3" [rowspan]="1">
+    <ng2-pdfjs-viewer class="fill" viewerId="MyID2" #viewer pdfSrc="/assets/compressed.tracemonkey-pldi-09.pdf"
+      locale="de-AT" (onDocumentLoad)="pdfLoaded()" [zoom]="zoom" cursor="HAND" downloadFileName="research.pdf"
+      scroll="W" spred="E" [print]="false" [errorOverride]="true" errorMessage="My error Message"></ng2-pdfjs-viewer>
   </mat-grid-tile>
-  <mat-grid-tile style="background-color: lightblue; flex: 1; flex-direction: column"
-                 *ngIf="isPdfLoaded"
-                 [colspan]="2"
-                 [rowspan]="1">
+  <mat-grid-tile style="background-color: lightblue; flex: 1; flex-direction: column" *ngIf="isPdfLoaded" [colspan]="2"
+    [rowspan]="1">
     <table class="w-100">
       <thead>
         <tr>
@@ -55,7 +50,8 @@
       </tbody>
     </table>
     <p class="mat-caption">
-      For more attributes visit <a href="https://github.com/vishnu-dev/ng2-pdfjs-viewer#options">GitHub | ng2-pdf-viewer</a>
+      For more attributes visit <a href="https://github.com/vishnu-dev/ng2-pdfjs-viewer#options">GitHub |
+        ng2-pdf-viewer</a>
     </p>
   </mat-grid-tile>
 </mat-grid-list>
