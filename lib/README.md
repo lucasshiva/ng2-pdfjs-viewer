@@ -1,15 +1,12 @@
 # Angular PDF viewer with Mozilla's PDF.js (v4.x) Viewer
 
-An angular component for displaying pdfs, wrapping the latest Mozilla PDF.js.
+A component for displaying pdfs, wrapping [Mozilla PDF.js](https://github.com/mozilla/pdf.js) version **4.7.76**.
 
-[![NPM Version](https://img.shields.io/npm/v/%40kariudo%2Fng2-pdfjs-viewer?logo=npm)](https://www.npmjs.com/package/@kariudo/ng2-pdfjs-viewer)
-[![Static Badge](https://img.shields.io/badge/Angular%20Version-17-green?logo=angular)](https://v17.angular.io/docs/)
-[![Static Badge](https://img.shields.io/badge/PDF.js%20Version-4.0.x-blue?logo=mozilla)](https://github.com/mozilla/pdf.js)
+It is also possible to display pdfs inline (embedded) or in a new tab.
 
+The original project is [intbot/ng2-pdfjs-viewer](https://github.com/intbot/ng2-pdfjs-viewer), which is based on version 2.2.171 of [PDF.js](https://github.com/mozilla/pdf.js). It used the old event handling and aesthetics, which were no longer compatible with current versions of [PDF.js](https://github.com/mozilla/pdf.js).
 
-An angular component for displaying pdfs inline(embedded) OR in a new tab along with a feature rich viewer. It functions as a wrapper to Mozilla's PDF.js viewer, now based on ✨ v4.0.x ✨. The previous library this project inherited from was stuck on v2.x and the old event handling and aesthetics, which were no longer compatible with current versions.
-
-This project is derived from [intbot/ng2-pdfjs-viewer](https://github.com/intbot/ng2-pdfjs-viewer) which does not support recent versions of PDF.js.
+This project is a fork of [kariudo/ng2-pdfjs-viewer](https://github.com/kariudo/ng2-pdfjs-viewer), a fork of [intbot/ng2-pdfjs-viewer](https://github.com/intbot/ng2-pdfjs-viewer) that updates [PDF.js](https://github.com/mozilla/pdf.js) to v4.x.x.
 
 ## What's new?
 
@@ -19,7 +16,7 @@ This project is derived from [intbot/ng2-pdfjs-viewer](https://github.com/intbot
 
 ## Examples
 
-**Angular sample app**: https://github.com/kariudo/ng2-pdfjs-viewer/tree/master/SampleApp  
+**Angular sample app**: https://github.com/lucasshiva/ng2-pdfjs-viewer/tree/master/SampleApp
 
 ## Features
 
@@ -56,10 +53,10 @@ Some of below features are unique to this component, which is unavailable in nat
 
 ## Installation
 
-## Step 1: Install `@kariudo/ng2-pdfjs-viewer`
+## Step 1: Install `@lucasshiva/ng2-pdfjs-viewer`
 
 ```bash
-$ npm install @kariudo/ng2-pdfjs-viewer --save
+$ npm install @lucasshiva/ng2-pdfjs-viewer --save
 ```
 
 And then configure it in your Angular `AppModule`:
@@ -69,7 +66,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
 
-import { PdfJsViewerModule } from "@kariudo/ng2-pdfjs-viewer"; // <-- Import PdfJsViewerModule module
+import { PdfJsViewerModule } from "@lucasshiva/ng2-pdfjs-viewer"; // <-- Import PdfJsViewerModule module
 
 @NgModule({
   declarations: [AppComponent],

@@ -1,13 +1,13 @@
 {
-  "name": "@kariudo/ng2-pdfjs-viewer",
+  "name": "@lucasshiva/ng2-pdfjs-viewer",
   "version": "17.0.22",
   "author": {
-    "name": "Hunter Horsman",
-    "email": "kariudo@gmail.com"
+    "name": "Lucas Silva",
+    "email": "silva.lucasdev@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kariudo/ng2-pdfjs-viewer"
+    "url": "https://github.com/lucasshiva/ng2-pdfjs-viewer"
   },
   "publishConfig": {
     "access": "public"
